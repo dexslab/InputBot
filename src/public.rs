@@ -92,8 +92,7 @@ fn mouse_canonical_names_lower() -> &'static HashMap<String, MouseButton> {
 }
 
 #[derive(Debug, Eq, PartialEq, Hash, Copy, Clone, EnumIter)]
-#[cfg_attr(feature = "serde", derive(Serialize))]
-
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize, Debug))]
 pub enum KeybdKey {
     BackspaceKey,
     TabKey,

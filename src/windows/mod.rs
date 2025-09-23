@@ -13,9 +13,9 @@ use windows::Win32::{
             GetAsyncKeyState, GetKeyState, MapVirtualKeyW, SendInput, INPUT, INPUT_0,
             INPUT_KEYBOARD, INPUT_MOUSE, KEYBDINPUT, KEYBD_EVENT_FLAGS, KEYEVENTF_KEYUP,
             KEYEVENTF_SCANCODE, MAP_VIRTUAL_KEY_TYPE, MOUSEEVENTF_HWHEEL, MOUSEEVENTF_LEFTDOWN,
-            MOUSEEVENTF_LEFTUP, MOUSEEVENTF_MIDDLEDOWN, MOUSEEVENTF_MIDDLEUP, MOUSEEVENTF_XUP,
-            MOUSEEVENTF_RIGHTDOWN, MOUSEEVENTF_RIGHTUP, MOUSEEVENTF_XDOWN,  MOUSEEVENTF_WHEEL, MOUSEINPUT,
-            MOUSE_EVENT_FLAGS, VIRTUAL_KEY,
+            MOUSEEVENTF_LEFTUP, MOUSEEVENTF_MIDDLEDOWN, MOUSEEVENTF_MIDDLEUP,
+            MOUSEEVENTF_RIGHTDOWN, MOUSEEVENTF_RIGHTUP, MOUSEEVENTF_WHEEL, MOUSEEVENTF_XDOWN,
+            MOUSEEVENTF_XUP, MOUSEINPUT, MOUSE_EVENT_FLAGS, VIRTUAL_KEY,
         },
         WindowsAndMessaging::{
             CallNextHookEx, GetCursorPos, GetMessageW, KillTimer, SetCursorPos, SetTimer,
@@ -315,7 +315,7 @@ fn send_mouse_input(flags: MOUSE_EVENT_FLAGS, data: i32, dx: i32, dy: i32) {
     let mouse: MOUSEINPUT = MOUSEINPUT {
         dx,
         dy,
-        mouseData: data,
+        mouseData: data as u32,
         dwFlags: flags,
         time: 0,
         dwExtraInfo: 0,
