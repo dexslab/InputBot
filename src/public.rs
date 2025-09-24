@@ -501,7 +501,7 @@ impl std::str::FromStr for KeybdKey {
 
         Err(ParseError::UnknownFormat {
             val: s.to_string(),
-            backtrace: std::backtrace::Backtrace::capture(),
+            backtrace: Backtrace::new(),
         })
     }
 }
@@ -625,7 +625,7 @@ impl std::str::FromStr for MouseButton {
 
         Err(ParseError::UnknownFormat {
             val: s.to_string(),
-            backtrace: std::backtrace::Backtrace::capture(),
+            backtrace: Backtrace::new(),
         })
     }
 }
