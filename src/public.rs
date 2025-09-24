@@ -14,9 +14,6 @@ use serde::{
 #[cfg(feature = "serde")]
 use thiserror::Error;
 
-#[cfg(feature = "serde")]
-use backtrace::Backtrace
-
 pub enum BlockInput {
     Block,
     DontBlock,
@@ -468,12 +465,12 @@ pub enum ParseError {
     ParseIntError {
         #[from]
         source: std::num::ParseIntError,
-        backtrace: Backtrace,
+        //backtrace: std::backtrace::Backtrace,
     },
     #[error("Unknown format '{val}'")]
     UnknownFormat {
         val: String,
-        backtrace: Backtrace,
+        //backtrace: std::backtrace::Backtrace,
     },
 }
 
@@ -501,7 +498,7 @@ impl std::str::FromStr for KeybdKey {
 
         Err(ParseError::UnknownFormat {
             val: s.to_string(),
-            backtrace: Backtrace::new(),
+            //backtrace: std::backtrace::Backtrace::capture(),
         })
     }
 }
@@ -625,7 +622,7 @@ impl std::str::FromStr for MouseButton {
 
         Err(ParseError::UnknownFormat {
             val: s.to_string(),
-            backtrace: Backtrace::new(),
+            //backtrace: std::backtrace::Backtrace::capture(),
         })
     }
 }
