@@ -11,7 +11,7 @@ use serde::{
     de::{Deserializer, Error},
     Deserialize, Serialize,
 };
-//#[cfg(feature = "serde")]
+#[cfg(feature = "serde")]
 use thiserror::Error;
 
 pub enum BlockInput {
