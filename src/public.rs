@@ -14,6 +14,9 @@ use serde::{
 #[cfg(feature = "serde")]
 use thiserror::Error;
 
+#[cfg(feature = "serde")]
+use backtrace::Backtrace
+
 pub enum BlockInput {
     Block,
     DontBlock,
@@ -465,12 +468,12 @@ pub enum ParseError {
     ParseIntError {
         #[from]
         source: std::num::ParseIntError,
-        backtrace: std::backtrace::Backtrace,
+        backtrace: Backtrace,
     },
     #[error("Unknown format '{val}'")]
     UnknownFormat {
         val: String,
-        backtrace: std::backtrace::Backtrace,
+        backtrace: Backtrace,
     },
 }
 
