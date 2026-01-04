@@ -244,7 +244,7 @@ impl LibinputInterfaceRaw {
 impl LibinputInterface for LibinputInterfaceRaw {
     fn open_restricted(&mut self, path: &Path, flags: i32) -> std::result::Result<OwnedFd, i32> {
         if let Ok(fd) = open(path, OFlag::from_bits_truncate(flags), Mode::empty()) {
-            Ok(unsafe { OwnedFd::from_raw_fd(fd) })
+            Ok(unsafe { OwnedFd::from_raw_fd(fd.into_raw_fd()) })
         } else {
             Err(1)
         }
